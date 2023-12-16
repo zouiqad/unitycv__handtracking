@@ -25,7 +25,7 @@ public class BombSpawner : MonoBehaviour
             Instantiate(selectedBombPrefab, spawnPos, Quaternion.identity);
 
             // Attendre avant de spawner la prochaine bombe
-            if (i < spawnPoints.Length - 1)
+            if (i < spawnPoints.Length)
                 StartCoroutine(WaitForNextSpawn());
         }
     }
