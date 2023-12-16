@@ -20,7 +20,7 @@ public class BombSpawner : MonoBehaviour
         for (int i = 0; i < spawnPoints.Length; i++)
         {
             Vector3 spawnPos = spawnPoints[i].position;
-            GameObject selectedBombPrefab = (i % 2 == 0) ? bombPrefab1 : bombPrefab2; // Alterner entre les deux prefabs de bombe
+            GameObject selectedBombPrefab = Random.Range(0, 2) == 0 ? bombPrefab1 : bombPrefab2; // Alterner entre les deux prefabs de bombe
 
             Instantiate(selectedBombPrefab, spawnPos, Quaternion.identity);
 
