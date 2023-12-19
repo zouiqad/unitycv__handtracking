@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Bomb : MonoBehaviour
 {
-    [SerializeField]  public ColorEnum.Color bombColor;
+    [SerializeField] public ColorEnum.Color bombColor;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private int TimeBeforeExplosion = 10;
     [SerializeField] public bool secured = false; // bomb is secured by player when bomb is in correct zone
@@ -20,7 +20,7 @@ public class Bomb : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        audioSource.time = 4f; // start sound at 4 seconds
+        audioSource.time = 0.0f; // start sound at 4 seconds
         StartCoroutine(CountDown());
     }
 

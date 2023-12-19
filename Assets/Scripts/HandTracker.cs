@@ -16,8 +16,8 @@ public class HandTracker : MonoBehaviour
 
         // Create points
         GameObject handGO = new GameObject("Hand");
-        handGO.transform.position = new Vector3(-12.5f, 2.0f, 12.5f);
-        handGO.transform.Rotate(new Vector3(-90.0f, 0.0f, 0.0f), Space.Self);
+        handGO.transform.position = new Vector3(20f, 2.0f, -10f);
+        handGO.transform.Rotate(new Vector3(0.0f, 0.0f, -180.0f), Space.Self);
 
 
         for(int i = 0; i < lmsGO.Length; i++)
@@ -55,7 +55,7 @@ public class HandTracker : MonoBehaviour
                 float y = float.Parse(points[pointIndex++], System.Globalization.CultureInfo.InvariantCulture);
                 float z = float.Parse(points[pointIndex++], System.Globalization.CultureInfo.InvariantCulture);
 
-                lmsGO[i].transform.localPosition = new Vector3(x * 20.0f, y * 20.0f, z * 20.0f);
+                lmsGO[i].transform.localPosition = new Vector3(x * 40.0f, z, y * 20.0f);
 
             }
         }
