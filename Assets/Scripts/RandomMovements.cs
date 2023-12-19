@@ -35,11 +35,14 @@ public class RandomMovement : MonoBehaviour
 
     void SetRandomDestination()
     {
+        if (agent.enabled == true)
+        {  
         Vector3 randomDirection = Random.insideUnitSphere * Random.Range(minDistance, maxDistance);
         randomDirection += transform.position;
         NavMeshHit hit;
         NavMesh.SamplePosition(randomDirection, out hit, maxDistance, NavMesh.AllAreas);
         randomDestination = hit.position;
         agent.SetDestination(randomDestination);
+        }
     }
 }
