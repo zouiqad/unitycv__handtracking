@@ -28,7 +28,7 @@ public class UdpReceiver : MonoBehaviour
         byte[] data = udpClient.EndReceive(ar, ref remoteEP);
         message = Encoding.ASCII.GetString(data);
 
-        Debug.Log("Received data: " + message);
+        //Debug.Log("Received data: " + message);
 
         // Continue receiving data
         BeginReceiving();
