@@ -58,15 +58,19 @@ public class Bomb : MonoBehaviour
         // when sound is finished destroy bomb
         Destroy(gameObject, 1.5f);
     }
-    public void Grab()
+
+    public void Grab(GameObject parent)
     {
         if (!secured)
         {
-        isGrabbed = true;
+            isGrabbed = true;
+            transform.parent = parent.transform;
         }
     }
+
     public void Release()
     {
         isGrabbed = false;
+        transform.parent = null;
     }
 }

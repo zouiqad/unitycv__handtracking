@@ -7,6 +7,8 @@ public class GestureDetection : MonoBehaviour
 
     public UdpReceiver udpReceiver;
 
+    private bool isGrabbing = false;
+    private Bomb grabbedBomb = null;
 
     public enum GestureType
     {
@@ -36,6 +38,20 @@ public class GestureDetection : MonoBehaviour
 
         // React to the gesture change here
         Debug.Log("Gesture changed to: " + newGesture);
+
+        GameObject otherObject = HandTracker.instance.CheckColision();
+        if (newGesture == 0 && otherObject != null && !isGrabbing)
+        {
+            grabbedBomb = otherObject.GetComponent<Bomb>();
+            grabbedBomb.Grab(HandTracker.instance.handCenterGO);
+            isGrabbing = true;
+        }
+
+        if (newGesture == 1 && isGrabbing)
+        {
+            grabbedBomb.Release();
+            isGrabbing = false;
+        }
     }
 
     // Start is called before the first frame update

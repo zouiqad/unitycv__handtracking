@@ -5,14 +5,19 @@ using UnityEngine;
 
 public class HandTracker : MonoBehaviour
 {
-    [SerializeField] private UdpReceiver udpReceiver;
+    public static HandTracker instance;
 
+    public GameObject handCenterGO;
+
+    [SerializeField] private UdpReceiver udpReceiver;
     private GameObject[] lmsGO;
+
     // Start is called before the first frame update
     void Start()
     {
-        lmsGO = new GameObject[21];
+        instance = this;
 
+        lmsGO = new GameObject[21];
 
         // Create points
         GameObject handGO = new GameObject("Hand");
@@ -56,18 +61,25 @@ public class HandTracker : MonoBehaviour
                 float z = float.Parse(points[pointIndex++], System.Globalization.CultureInfo.InvariantCulture);
 
                 lmsGO[i].transform.localPosition = new Vector3(x * 40.0f, z, y * 20.0f);
-
             }
+            // assign ref to center hand
+            handCenterGO = lmsGO[9];
+
         }
 
 
     }
 
-    private void CheckColision()
+    // for each sphere lm check if it is colliding 
+    public GameObject CheckColision()
     {
         foreach(var lmGO in lmsGO)
         {
-
+            LandmarkCollision collider = lmGO.GetComponent<LandmarkCollision>();
+            if (collider.otherObject != null)
+                return collider.otherObject;
         }
+
+        return null;
     }
 }
