@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     private Canvas canvas;
 
     public int life = 3;
+    public int score = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +48,9 @@ public class GameManager : MonoBehaviour
 
                 break;
         }
+
+        // Update Score on text mesh pro
+        canvas.transform.GetChild(4).GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text = score.ToString();
 
     }
 }

@@ -5,11 +5,13 @@ using UnityEngine;
 public class PrisonZone : MonoBehaviour
 {
     [SerializeField] public ColorEnum.Color prisonColor;
+    private GameManager gameManager;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         
     }
 
@@ -28,6 +30,7 @@ public class PrisonZone : MonoBehaviour
             {
                 bomb.secured = true;
                 bomb.Release();
+                gameManager.score++;
                 Debug.Log("Bomb is secured");
             }
             else
