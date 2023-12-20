@@ -28,9 +28,9 @@ public class PrisonZone : MonoBehaviour
             Bomb bomb = other.gameObject.GetComponent<Bomb>();
             if (bomb.bombColor == prisonColor)
             {
+                if (!bomb.secured) gameManager.score++;
                 bomb.secured = true;
                 bomb.Release();
-                gameManager.score++;
                 Debug.Log("Bomb is secured");
             }
             else
