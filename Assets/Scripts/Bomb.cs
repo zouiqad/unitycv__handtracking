@@ -10,6 +10,8 @@ public class Bomb : MonoBehaviour
     [SerializeField] private int TimeBeforeExplosion = 10;
     [SerializeField] public bool secured = false; // bomb is secured by player when bomb is in correct zone
 
+    private GameManager gameManager;
+
     private bool exploded = false;
     public bool isGrabbed = false;
     // get navmeshagent
@@ -20,8 +22,8 @@ public class Bomb : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        audioSource.time = 0.0f; // start sound at 4 seconds
         StartCoroutine(CountDown());
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -51,6 +53,7 @@ public class Bomb : MonoBehaviour
     void Explode()
     {
         exploded = true;
+        gameManager.life--;
         audioSource.Play();
         // when sound is finished destroy bomb
         Destroy(gameObject, 1.5f);

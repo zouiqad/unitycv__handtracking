@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minDistance: 5
-  maxDistance: 15
+  maxDistance: 20
 --- !u!54 &1183884920049844973
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -188,7 +188,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bombColor: 0
   audioSource: {fileID: 4343111274891614760}
-  TimeBeforeExplosion: 10
+  TimeBeforeExplosion: 25
   secured: 0
   isGrabbed: 0
   agent: {fileID: 0}

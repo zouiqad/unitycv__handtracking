@@ -15,6 +15,15 @@ public class BombSpawner : MonoBehaviour
         SpawnBombs();
     }
 
+    private void Update()
+    {
+        // decrease spawn delay over time
+        if (spawnDelay > 0.5f)
+        {
+            spawnDelay -= Time.deltaTime / 100;
+        }
+    }
+
     void SpawnBombs()
     {
         for (int i = 0; i < spawnPoints.Length; i++)
