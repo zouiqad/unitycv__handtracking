@@ -30,7 +30,6 @@ public class PrisonZone : MonoBehaviour
             {
                 if (!bomb.secured) gameManager.score++;
                 bomb.secured = true;
-                bomb.Release();
                 Debug.Log("Bomb is secured");
             }
             else
